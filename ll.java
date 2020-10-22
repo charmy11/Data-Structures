@@ -31,16 +31,38 @@ public  class ll{
         }
     }
 
-    public void printList()
+    public void deleteNode(int number)
     {
         Node temp=head;
+        Node prevNode=temp;
+        Node nextNode;
+        while(temp!=null)
+        {
+            if(temp.data==number)
+            {
+                if(temp==head)
+                {
+                    head=temp.next;
+                }
+                int num=temp.data;
+                nextNode=temp.next;
+                prevNode.next=nextNode;
+                System.out.println("deleted element is "+num);
+                return;
+            }
+
+            prevNode=temp;
+            temp=temp.next;
+        }
+    }
+
+    public void printList()
+    {
+        Node temp=head; 
         while(temp!=null)
         {
             System.out.println(temp.data);
-            
-            
             temp=temp.next;
-
         }
     }
     
@@ -49,9 +71,7 @@ public  class ll{
         ll list=new ll();
         list.addNode(5);
         list .addNode(6);
+        list.deleteNode(6);
         list.printList();
-        
-
-
     }
 }
